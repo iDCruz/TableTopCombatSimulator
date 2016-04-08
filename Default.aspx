@@ -20,7 +20,7 @@
         <asp:RequiredFieldValidator ID="user_name_validator" runat="server" ControlToValidate="tb_user" ErrorMessage="User Name Required" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
         <br />
-        <asp:TextBox ID="tb_pass" runat="server"></asp:TextBox>
+        <asp:TextBox ID="tb_pass" TextMode="Password" runat="server"></asp:TextBox>
         Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:RequiredFieldValidator ID="password_validator" runat="server" ControlToValidate="tb_pass" ErrorMessage="Password Required" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
