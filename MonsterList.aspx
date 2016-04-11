@@ -13,8 +13,8 @@
     <div>
         <asp:FormView ID="Attack_Insert" runat="server" DefaultMode="Insert" BorderStyle="Solid" OnItemCreated="Attack_Insert_ItemCreated" DataSourceID="Attack_Insert_Source">
             <InsertItemTemplate>
-                creature_id:
-                <asp:TextBox ID="creature_idTextBox" runat="server" Text='<%# Bind("creature_id") %>' />
+                creature:
+                <asp:DropDownList ID="creature_DropDownList" runat="server" AppendDataBoundItems="false" DataSourceID="Monster_Name_Source" DataTextField="creature_name" DataValueField="creature_id" OnSelectedIndexChanged="creature_DropDownList_SelectedIndexChanged" AutoPostBack="true"/>
                 <br />
                 attack_name:
                 <asp:TextBox ID="attack_nameTextBox" runat="server" Text='<%# Bind("attack_name") %>' />
@@ -35,6 +35,7 @@
                 <asp:TextBox ID="attack_modifierTextBox" runat="server" Text='<%# Bind("attack_modifier") %>' />
                 <br />
                 <asp:TextBox ID="user_idTextBox" runat="server" Text='<%# Bind("user_id") %>' Visible="false" />
+                <asp:TextBox ID="creature_idTextBox" runat="server" Text='<%# Bind("creature_id") %>' Visible="false" />
                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </InsertItemTemplate>
@@ -50,6 +51,11 @@
                 <asp:Parameter Name="attack_modifier" Type="Int32" />
                 <asp:Parameter Name="user_id" Type="String" />
             </InsertParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="Monster_Name_Source" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" SelectCommand="SELECT [creature_id], [creature_name] FROM [Creatures] WHERE ([user_id] = @User_id)">
+            <SelectParameters>
+                <asp:SessionParameter name="User_id" SessionField="User_id"/>
+            </SelectParameters>
         </asp:SqlDataSource>
         <br />
         <asp:FormView ID="Monster_Insert" runat="server" DataKeyNames="creature_id" DefaultMode="Insert" OnItemCreated="Monster_Insert_ItemCreated" BorderStyle="Solid" DataSourceID="Insert_Creature">
@@ -104,7 +110,7 @@
             <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
         <br />
-        <asp:SqlDataSource ID="Creatures_Table" runat="server" FilterExpression="user_id = {0}" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" DeleteCommand="DELETE FROM [Creatures] WHERE [creature_id] = @creature_id" InsertCommand="INSERT INTO [Creatures] ([user_id], [creature_name], [hit_points], [initiative], [armor_class]) VALUES (@user_id, @creature_name, @hit_points, @initiative, @armor_class)" SelectCommand="SELECT * FROM [Creatures]" UpdateCommand="UPDATE [Creatures] SET [user_id] = @user_id, [creature_name] = @creature_name, [hit_points] = @hit_points, [initiative] = @initiative, [armor_class] = @armor_class WHERE [creature_id] = @creature_id">
+        <asp:SqlDataSource ID="Creatures_Table" runat="server" FilterExpression="user_id = {0}" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" DeleteCommand="DELETE FROM [Creatures] WHERE [creature_id] = @creature_id" SelectCommand="SELECT * FROM [Creatures]">
             <DeleteParameters>
                 <asp:Parameter Name="creature_id" Type="Int32" />
             </DeleteParameters>
@@ -115,14 +121,6 @@
                 <asp:Parameter Name="initiative" Type="Int32" />
                 <asp:Parameter Name="armor_class" Type="Int32" />
             </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="user_id" Type="Int32" />
-                <asp:Parameter Name="creature_name" Type="String" />
-                <asp:Parameter Name="hit_points" Type="Int32" />
-                <asp:Parameter Name="initiative" Type="Int32" />
-                <asp:Parameter Name="armor_class" Type="Int32" />
-                <asp:Parameter Name="creature_id" Type="Int32" />
-            </UpdateParameters>
             <FilterParameters>
                 <asp:SessionParameter
                     Name="User_id"
@@ -133,7 +131,7 @@
         <asp:GridView ID="Attack_GridView" runat="server" AllowPaging="True" AllowSorting="True" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataSourceID="Attacks_Table" style="margin-right: 0px" AutoGenerateColumns="False" DataKeyNames="attack_id">
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" />
-                <asp:BoundField DataField="attack_id" HeaderText="attack_id" InsertVisible="False" ReadOnly="True" SortExpression="attack_id" />
+                <asp:BoundField DataField="attack_id" HeaderText="attack_id" InsertVisible="False" ReadOnly="True" SortExpression="attack_id" Visible="False" />
                 <asp:BoundField DataField="creature_id" HeaderText="creature_id" SortExpression="creature_id" />
                 <asp:BoundField DataField="attack_name" HeaderText="attack_name" SortExpression="attack_name" />
                 <asp:BoundField DataField="attack_damage" HeaderText="attack_damage" SortExpression="attack_damage" />
@@ -153,7 +151,7 @@
             <SortedDescendingCellStyle BackColor="#F1E5CE" />
             <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
-        <asp:SqlDataSource ID="Attacks_Table" runat="server" FilterExpression="user_id = {0}"  ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" DeleteCommand="DELETE FROM [Attacks] WHERE [attack_id] = @attack_id" InsertCommand="INSERT INTO [Attacks] ([creature_id], [attack_name], [attack_damage], [critical_range], [finesse], [is_weapon], [attack_modifier], [user_id]) VALUES (@creature_id, @attack_name, @attack_damage, @critical_range, @finesse, @is_weapon, @attack_modifier, @user_id)" SelectCommand="SELECT * FROM [Attacks]" UpdateCommand="UPDATE [Attacks] SET [creature_id] = @creature_id, [attack_name] = @attack_name, [attack_damage] = @attack_damage, [critical_range] = @critical_range, [finesse] = @finesse, [is_weapon] = @is_weapon, [attack_modifier] = @attack_modifier, [user_id] = @user_id WHERE [attack_id] = @attack_id">
+        <asp:SqlDataSource ID="Attacks_Table" runat="server" FilterExpression="user_id = {0}"  ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" DeleteCommand="DELETE FROM [Attacks] WHERE [attack_id] = @attack_id" SelectCommand="SELECT * FROM [Attacks]">
             <DeleteParameters>
                 <asp:Parameter Name="attack_id" Type="Int32" />
             </DeleteParameters>
@@ -167,17 +165,6 @@
                 <asp:Parameter Name="attack_modifier" Type="Int32" />
                 <asp:Parameter Name="user_id" Type="Int32" />
             </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="creature_id" Type="Int32" />
-                <asp:Parameter Name="attack_name" Type="String" />
-                <asp:Parameter Name="attack_damage" Type="String" />
-                <asp:Parameter Name="critical_range" Type="Int32" />
-                <asp:Parameter Name="finesse" Type="Boolean" />
-                <asp:Parameter Name="is_weapon" Type="Boolean" />
-                <asp:Parameter Name="attack_modifier" Type="Int32" />
-                <asp:Parameter Name="user_id" Type="Int32" />
-                <asp:Parameter Name="attack_id" Type="Int32" />
-            </UpdateParameters>
             <FilterParameters>
                 <asp:SessionParameter
                     Name="User_id"

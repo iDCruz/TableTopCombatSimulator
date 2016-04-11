@@ -13,6 +13,18 @@ public partial class MonsterList : System.Web.UI.Page
         {
             Server.Transfer("Default.aspx", true);
         }
+
+        if(!IsPostBack)
+        {
+            Creature_GridView.DataBind();
+            Attack_GridView.DataBind();
+            Monster_Name_Source.DataBind();
+
+            var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
+            dropDownList.DataBind();
+        }
+
+
     }
 
 
@@ -22,8 +34,13 @@ public partial class MonsterList : System.Web.UI.Page
         {
             TextBox UserID = Monster_Insert.FindControl("user_idTextBox") as TextBox;
             UserID.Text = Session["User_id"].ToString();
+
             Creature_GridView.DataBind();
             Attack_GridView.DataBind();
+            Monster_Name_Source.DataBind();
+
+            var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
+            dropDownList.DataBind();
         }
     }
 
@@ -32,10 +49,17 @@ public partial class MonsterList : System.Web.UI.Page
     {
         if (Attack_Insert.CurrentMode == FormViewMode.Insert)
         {
+            
+
             TextBox UserID = Attack_Insert.FindControl("user_idTextBox") as TextBox;
             UserID.Text = Session["User_id"].ToString();
+
             Creature_GridView.DataBind();
             Attack_GridView.DataBind();
+            Monster_Name_Source.DataBind();
+
+            var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
+            dropDownList.DataBind();
         }
     }
 
@@ -44,8 +68,22 @@ public partial class MonsterList : System.Web.UI.Page
         //GET DELETEING COLUMN
         int creature_id = Convert.ToInt32(this.Creature_GridView.DataKeys[e.RowIndex].Values["creature_id"].ToString());
         Attacks_Query.Delete_Attacks_Of_Creature(creature_id);
+
         Creature_GridView.DataBind();
         Attack_GridView.DataBind();
+        Monster_Name_Source.DataBind();
+
+        var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
+        dropDownList.DataBind();
     }
 
+
+    protected void creature_DropDownList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
+        string creature_id = dropDownList.SelectedValue;
+
+        TextBox CreatureID = Attack_Insert.FindControl("creature_idTextBox") as TextBox;
+        CreatureID.Text = creature_id;
+    }
 }
