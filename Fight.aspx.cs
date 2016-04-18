@@ -14,4 +14,9 @@ public partial class Fight : System.Web.UI.Page
             Server.Transfer("Default.aspx", true);
         }
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+    }
 }
