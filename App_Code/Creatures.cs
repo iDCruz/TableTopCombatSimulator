@@ -12,7 +12,6 @@ public class Creatures
     private int hit_points;
     private int initiative;
     private int armor_class;
-    private int base_attack_bonus;
 
     public Creatures(SqlDataReader rdr)
     {
@@ -22,7 +21,6 @@ public class Creatures
         hit_points = (int)rdr["hit_points"];
         initiative = (int)rdr["initiative"];
         armor_class = (int)rdr["armor_class"];
-        base_attack_bonus = (int)rdr["base_attack_bonus"];
     }
 
     public int Creature_id
@@ -100,19 +98,6 @@ public class Creatures
         set
         {
             armor_class = value;
-        }
-    }
-
-    public int Base_attack_bonus
-    {
-        get
-        {
-            return base_attack_bonus;
-        }
-
-        set
-        {
-            base_attack_bonus = value;
         }
     }
 }

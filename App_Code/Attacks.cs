@@ -11,21 +11,19 @@ public class Attacks
     private int creature_id;
     private string attack_name;
     private string attack_damge;
-    private int critical_range;
-    private Boolean finesse;
-    private Boolean is_weapon;
+    private int critical_threshold;
+    private int critical_multiplier;
     private int attack_modifier;
     private int user_id;
 
     public Attacks(SqlDataReader rdr)
     {
-        Attack_id = (int)rdr["Attack_id"];
-        Creature_id = (int)rdr["Creature_id"];
-        Attack_name = (string)rdr["Attack_name"];
-        Attack_damge = (string)rdr["Attack_damage"];
-        Critical_range = (int)rdr["Critical_range"];
-        Finesse = (Boolean)rdr["finesse"];
-        Is_weapon = (Boolean)rdr["is_weapon"];
+        Attack_id = (int)rdr["attack_id"];
+        Creature_id = (int)rdr["creature_id"];
+        Attack_name = (string)rdr["attack_name"];
+        Attack_damge = (string)rdr["attack_damage"];
+        Critical_threshold = (int)rdr["critical_threshold"];
+        Critical_multiplier = (int)rdr["critical_multiplier"];
         Attack_modifier = (int)rdr["attack_modifier"];
         User_id = (int)rdr["user_id"];
     }
@@ -82,42 +80,29 @@ public class Attacks
         }
     }
 
-    public int Critical_range
+    public int Critical_threshold
     {
         get
         {
-            return critical_range;
+            return critical_threshold;
         }
 
         set
         {
-            critical_range = value;
+            critical_threshold = value;
         }
     }
 
-    public bool Finesse
+    public int Critical_multiplier
     {
         get
         {
-            return finesse;
+            return critical_multiplier;
         }
 
         set
         {
-            finesse = value;
-        }
-    }
-
-    public bool Is_weapon
-    {
-        get
-        {
-            return is_weapon;
-        }
-
-        set
-        {
-            is_weapon = value;
+            critical_multiplier = value;
         }
     }
 

@@ -29,7 +29,7 @@ public partial class Fight : System.Web.UI.Page
 
         //Fight Simulation Var
         Random random = new Random(DateTime.Now.Millisecond);
-        int number_of_fights_total = 50000;
+        int number_of_fights_total = 1000000;
         int number_of_fights_count = number_of_fights_total;
         bool creature_1_goes_first = true;
         float[] stats = { 0.0F, 0.0F };
@@ -142,7 +142,36 @@ public partial class Fight : System.Web.UI.Page
         //Finalize win rate
         creature_1_win_rate = creature_1_win_rate / number_of_fights_total;
         creature_2_win_rate = creature_2_win_rate / number_of_fights_total;
-        string test = "";
+
+        Win_Rate_1.Text = (Math.Round(creature_1_win_rate, 2) * 100).ToString() + "%";
+        Win_Rate_2.Text = (Math.Round(creature_2_win_rate, 2) * 100).ToString() + "%";
+
+        creature_1_hit_rate = 0.0F;
+        creature_2_hit_rate = 0.0F;
+        creature_1_damage_rate = 0.0F;
+        creature_2_damage_rate = 0.0F;
+
+        foreach (float k in creature_1_hit_rate_list)
+        {
+            creature_1_hit_rate += k;
+        }
+        foreach (float j in creature_2_hit_rate_list)
+        {
+            creature_2_hit_rate += j;
+        }
+        foreach (float h in creature_1_damage_rate_list)
+        {
+            creature_1_damage_rate += h;
+        }
+        foreach (float i in creature_2_damage_rate_list)
+        {
+            creature_2_damage_rate += i;
+        }
+
+        Accuracy_1.Text = (Math.Round((creature_1_hit_rate/creature_1_hit_rate_list.Count()), 2) * 100).ToString() + "%";
+        Accuracy_2.Text = (Math.Round((creature_2_hit_rate/creature_2_hit_rate_list.Count()), 2) * 100).ToString() + "%";
+        Damage_1.Text = (Math.Round((creature_1_damage_rate/creature_1_damage_rate_list.Count()), 2)).ToString();
+        Damage_2.Text = (Math.Round((creature_2_damage_rate / creature_2_damage_rate_list.Count()), 2)).ToString();
     }
 
 
@@ -190,6 +219,12 @@ public partial class Fight : System.Web.UI.Page
                     }
 
                     damage_roll += damage_modifier;
+
+                    // Take into Account Crit Mult
+                    if(attack_roll >= attack.Critical_threshold)
+                    {
+                        damage_roll *= attack.Critical_multiplier;
+                    }
 
                     // Min 1 dmg
                     if (damage_roll <= 0)
