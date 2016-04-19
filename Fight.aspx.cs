@@ -32,7 +32,7 @@ public partial class Fight : System.Web.UI.Page
         int number_of_fights_total = 50000;
         int number_of_fights_count = number_of_fights_total;
         bool creature_1_goes_first = true;
-        List<float> stats = new List<float>();
+        float[] stats = { 0.0F, 0.0F };
         List<float> creature_1_hit_rate_list = new List<float>();
         List<float> creature_2_hit_rate_list = new List<float>();
         List<float> creature_1_damage_rate_list = new List<float>();
@@ -146,11 +146,11 @@ public partial class Fight : System.Web.UI.Page
     }
 
 
-    protected List<float> Attack(Creatures attacking_creature, List<Attacks> attackers_attacks, Creatures attacked_creature, 
+    protected float[] Attack(Creatures attacking_creature, List<Attacks> attackers_attacks, Creatures attacked_creature, 
         ref int attacked_creature_hp, Random random)
     {
         // Attack Stats
-        List<float> stats = new List<float>();
+        float[] stats = { 0.0F, 0.0F };
         float hit_rate = 0.0f;
         float avg_damage = 0.0F;
 
@@ -208,8 +208,8 @@ public partial class Fight : System.Web.UI.Page
 
         // Return Stats
         hit_rate = hit_rate / attackers_attacks.Count();
-        stats.Add(hit_rate);
-        stats.Add(avg_damage);
+        stats[0] = (hit_rate);
+        stats[1] = (avg_damage);
 
         return stats;
     }
