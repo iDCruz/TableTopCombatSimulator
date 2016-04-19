@@ -1,0 +1,25 @@
+﻿h1 {
+    font-family: Calibri;
+    font-style: italic;
+    font-weight: bold;
+}
+
+body {
+    font-family: Calibri;
+
+    background: url("Images/parchment-background.png") no-repeat 50% 50% fixed;
+    background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    -webkit-background-size:cover;
+}
+
+.center {
+            display: block;
+            width: auto;
+            text-align: center;
+            margin-left: auto;
+            margin-right:auto;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
