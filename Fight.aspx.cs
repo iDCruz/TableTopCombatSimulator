@@ -29,7 +29,7 @@ public partial class Fight : System.Web.UI.Page
 
         //Fight Simulation Var
         Random random = new Random(DateTime.Now.Millisecond);
-        int number_of_fights_total = 5;
+        int number_of_fights_total = 50000;
         int number_of_fights_count = number_of_fights_total;
         bool creature_1_goes_first = true;
         List<float> stats = new List<float>();
@@ -151,7 +151,7 @@ public partial class Fight : System.Web.UI.Page
     {
         // Attack Stats
         List<float> stats = new List<float>();
-        float hit_rate = 0.0F;
+        float hit_rate = 0.0f;
         float avg_damage = 0.0F;
 
         foreach (Attacks attack in attackers_attacks)
@@ -207,7 +207,6 @@ public partial class Fight : System.Web.UI.Page
         }
 
         // Return Stats
-        avg_damage = avg_damage / hit_rate;
         hit_rate = hit_rate / attackers_attacks.Count();
         stats.Add(hit_rate);
         stats.Add(avg_damage);
