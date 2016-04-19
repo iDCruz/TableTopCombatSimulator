@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[Creatures] (
     [hit_points]    INT           NOT NULL,
     [initiative]    INT           NOT NULL,
     [armor_class]   INT           NOT NULL,
-    PRIMARY KEY CLUSTERED ([creature_id] ASC),
-    FOREIGN KEY ([user_id]) REFERENCES [dbo].[Users] ([user_id])
+	[base_attack_bonus] INT       NOT NULL,
+    PRIMARY KEY CLUSTERED ([creature_id] ASC)
 );
 

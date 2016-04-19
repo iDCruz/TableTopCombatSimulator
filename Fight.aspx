@@ -23,7 +23,7 @@
         <br />
         <br />
         <asp:Button ID="Button1" runat="server" Text="Fight" OnClick="Button1_Click" />
-        <asp:SqlDataSource ID="Creature_Select" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" SelectCommand="SELECT [creature_name] FROM [Creatures] WHERE ([user_id] = @User_id)">
+        <asp:SqlDataSource ID="Creature_Select" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" SelectCommand="SELECT [creature_id] [creature_name] FROM [Creatures] WHERE ([user_id] = @User_id)">
         <SelectParameters>
             <asp:sessionparameter Name="User_id" SessionField="User_id" Type="Int32" />
         </SelectParameters>

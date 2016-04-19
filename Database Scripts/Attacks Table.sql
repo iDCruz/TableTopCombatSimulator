@@ -9,7 +9,5 @@ CREATE TABLE [dbo].[Attacks] (
     [attack_modifier] INT           NOT NULL,
     [user_id]         INT           NOT NULL,
     PRIMARY KEY CLUSTERED ([attack_id] ASC),
-    FOREIGN KEY ([creature_id]) REFERENCES [dbo].[Creatures] ([creature_id]),
-    FOREIGN KEY ([user_id]) REFERENCES [dbo].[Users] ([user_id])
+    FOREIGN KEY ([creature_id]) REFERENCES [dbo].[Creatures] ([creature_id])
 );
-

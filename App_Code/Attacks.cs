@@ -15,6 +15,7 @@ public class Attacks
     private Boolean finesse;
     private Boolean is_weapon;
     private int attack_modifier;
+    private int user_id;
 
     public Attacks(SqlDataReader rdr)
     {
@@ -26,6 +27,7 @@ public class Attacks
         Finesse = (Boolean)rdr["finesse"];
         Is_weapon = (Boolean)rdr["is_weapon"];
         Attack_modifier = (int)rdr["attack_modifier"];
+        User_id = (int)rdr["user_id"];
     }
 
     public int Attack_id
@@ -129,6 +131,19 @@ public class Attacks
         set
         {
             attack_modifier = value;
+        }
+    }
+
+    public int User_id
+    {
+        get
+        {
+            return user_id;
+        }
+
+        set
+        {
+            user_id = value;
         }
     }
 

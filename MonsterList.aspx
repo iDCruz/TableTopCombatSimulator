@@ -74,17 +74,21 @@
                 armor_class:
                 <asp:TextBox ID="armor_classTextBox" runat="server" Text='<%# Bind("armor_class") %>' />
                 <br />
+                base_attack_bonus:
+                <asp:TextBox ID="base_attack_bonusTextBox" runat="server" Text='<%# Bind("base_attack_bonus") %>' />
+                <br />
                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </InsertItemTemplate>
         </asp:FormView>
-        <asp:SqlDataSource ID="Insert_Creature" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" InsertCommand="INSERT INTO Creatures(user_id, creature_name, hit_points, initiative, armor_class) VALUES (@user_id, @creature_name, @hit_points, @initiative, @armor_class)" SelectCommand="SELECT Creatures.* FROM Creatures">
+        <asp:SqlDataSource ID="Insert_Creature" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" InsertCommand="INSERT INTO Creatures(user_id, creature_name, hit_points, initiative, armor_class, base_attack_bonus) VALUES (@user_id, @creature_name, @hit_points, @initiative, @armor_class, @base_attack_bonus)" SelectCommand="SELECT Creatures.* FROM Creatures">
             <InsertParameters>
                 <asp:Parameter Name="user_id" />
                 <asp:Parameter Name="creature_name" />
                 <asp:Parameter Name="hit_points" />
                 <asp:Parameter Name="initiative" />
                 <asp:Parameter Name="armor_class" />
+                <asp:Parameter Name="base_attack_bonus" />
             </InsertParameters>
         </asp:SqlDataSource>
         <br />
@@ -98,6 +102,7 @@
                 <asp:BoundField DataField="hit_points" HeaderText="hit_points" SortExpression="hit_points" />
                 <asp:BoundField DataField="initiative" HeaderText="initiative" SortExpression="initiative" />
                 <asp:BoundField DataField="armor_class" HeaderText="armor_class" SortExpression="armor_class" />
+                <asp:BoundField DataField="base_attack_bonus" HeaderText="base_attack_bonus" SortExpression="base_attack_bonus" />
             </Columns>
             <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
             <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
@@ -120,6 +125,7 @@
                 <asp:Parameter Name="hit_points" Type="Int32" />
                 <asp:Parameter Name="initiative" Type="Int32" />
                 <asp:Parameter Name="armor_class" Type="Int32" />
+                <asp:Parameter Name="base_attack_bonus" Type="Int32" />
             </InsertParameters>
             <FilterParameters>
                 <asp:SessionParameter
