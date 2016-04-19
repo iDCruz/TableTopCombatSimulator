@@ -22,6 +22,7 @@ public partial class MonsterList : System.Web.UI.Page
 
             var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
             dropDownList.DataBind();
+            dropDownList.Items.Insert(0, new ListItem("Select Creature"));
         }
 
 
@@ -41,6 +42,7 @@ public partial class MonsterList : System.Web.UI.Page
 
             var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
             dropDownList.DataBind();
+            dropDownList.Items.Insert(0, new ListItem("Select Creature"));
         }
     }
 
@@ -49,8 +51,6 @@ public partial class MonsterList : System.Web.UI.Page
     {
         if (Attack_Insert.CurrentMode == FormViewMode.Insert)
         {
-            
-
             TextBox UserID = Attack_Insert.FindControl("user_idTextBox") as TextBox;
             UserID.Text = Session["User_id"].ToString();
 
@@ -60,6 +60,7 @@ public partial class MonsterList : System.Web.UI.Page
 
             var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
             dropDownList.DataBind();
+            dropDownList.Items.Insert(0, new ListItem("Select Creature"));
         }
     }
 
@@ -75,6 +76,7 @@ public partial class MonsterList : System.Web.UI.Page
 
         var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
         dropDownList.DataBind();
+        dropDownList.Items.Insert(0, new ListItem("Select Creature"));
     }
 
 
