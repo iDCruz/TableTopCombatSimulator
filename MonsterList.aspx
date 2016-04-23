@@ -59,17 +59,21 @@
                 <br />
                 creature_name:
                 <asp:TextBox ID="creature_nameTextBox" runat="server" Text='<%# Bind("creature_name") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server"  ControlToValidate="creature_nameTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Creature name is required"></asp:RequiredFieldValidator>
                 <br />
                 initiative:
-                <asp:TextBox ID="initiativeTextBox" runat="server" Text='<%# Bind("initiative") %>' />
+                <asp:TextBox TextMode="Number" ID="initiativeTextBox" runat="server" Text='<%# Bind("initiative") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="initiativeTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Initiative is required"></asp:RequiredFieldValidator>
                 <br />
                 hit_points:
-                <asp:TextBox ID="hit_pointsTextBox" runat="server" Text='<%# Bind("hit_points") %>' />
+                <asp:TextBox TextMode="Number" ID="hit_pointsTextBox" runat="server" Text='<%# Bind("hit_points") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="hit_pointsTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Hit points is required"></asp:RequiredFieldValidator>
                 <br />
                 armor_class:
-                <asp:TextBox ID="armor_classTextBox" runat="server" Text='<%# Bind("armor_class") %>' />
+                <asp:TextBox TextMode="Number" ID="armor_classTextBox" runat="server" Text='<%# Bind("armor_class") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="armor_classTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Armor class is required"></asp:RequiredFieldValidator>
                 <br />
-                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                <asp:LinkButton ValidationGroup="MonsterInsert" ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </InsertItemTemplate>
         </asp:FormView>
