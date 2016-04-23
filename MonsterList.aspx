@@ -27,7 +27,7 @@
                 attack_damage:
                 <asp:TextBox ID="attack_damageTextBox" runat="server" Text='<%# Bind("attack_damage") %>' />
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack damage is required"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack damage must be in the format idi where i is an integer" ValidationExpression="^-?\d+d-?\d+$"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack damage must be in the format idi +/- i where i is an integer" ValidationExpression="^\dd\d[+-]{1}\d$"></asp:RegularExpressionValidator>
                 <br />
                 critical_threshold:
                 <asp:TextBox TextMode="Number" ID="critical_thresholdTextBox" runat="server" Text='<%# Bind("critical_threshold") %>' />
