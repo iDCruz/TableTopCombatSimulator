@@ -24,7 +24,7 @@
                 <asp:BoundField DataField="creature_2_win_rate" HeaderText="creature_2_win_rate" SortExpression="creature_2_win_rate" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="Fight_History_Source" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" SelectCommand="SELECT * FROM [History]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="Fight_History_Source" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" SelectCommand="SELECT History.*, A.creature_name As creature_1_name, B.creature_name As creature_2_name FROM History,Creatures As A,Creatures As B WHERE History.creature_1_id = A.creature_id AND History.creature_2_id = B.creature_id "></asp:SqlDataSource>
     <div>
     
     </div>

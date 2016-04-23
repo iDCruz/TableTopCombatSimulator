@@ -172,8 +172,9 @@ public partial class Fight : System.Web.UI.Page
         Accuracy_2.Text = (Math.Round((creature_2_hit_rate/creature_2_hit_rate_list.Count()), 2) * 100).ToString() + "%";
         Damage_1.Text = (Math.Round((creature_1_damage_rate/creature_1_damage_rate_list.Count()), 2)).ToString();
         Damage_2.Text = (Math.Round((creature_2_damage_rate / creature_2_damage_rate_list.Count()), 2)).ToString();
-    }
 
+        History_Query.Record_Combat_Results((int)Session["User_id"],creature1.Creature_id, creature2.Creature_id, creature_1_hit_rate, creature_2_hit_rate, creature_1_damage_rate, creature_2_damage_rate, creature_1_win_rate, creature_2_win_rate);
+    }
 
     protected float[] Attack(Creatures attacking_creature, List<Attacks> attackers_attacks, Creatures attacked_creature, 
         ref int attacked_creature_hp, Random random)
