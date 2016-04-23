@@ -5,5 +5,5 @@ Still Needed
 2. Ability to save fight data, probably a button that will post the info to a fight history row.
 3. Fight history table on the history page that shows a users saved fight.
 4. Input verification for pretty much everything, Ask me if you ar eunsure about what needs to go into each field.
-5. Prevent users from having two creatures with the same name.
+~5. Prevent users from having two creatures with the same name.~
 6. When a user is created a few default creatures are created and assigned to them automaticly. 
