@@ -95,6 +95,8 @@ public class Creatures_Query
                 e.ToString();
             }
         }
+        
+        Attacks_Query.Create_Default_Attacks(user_id, creature_name);
     }
 
     public static SqlConnection Setup_Connection()

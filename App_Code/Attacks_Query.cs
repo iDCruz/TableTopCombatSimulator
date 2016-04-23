@@ -73,6 +73,61 @@ public class Attacks_Query
         return cmd.ExecuteReader();
     }
 
+    public static void Create_Default_Attacks(int user_id, string creature_name)
+    {
+        string e;
+        Creatures creature = Creatures_Query.Get_Creature(out e, creature_name, user_id);
+
+        switch (creature.Creature_name)
+        {
+            case "Akata":
+                Create_Default_Attack(user_id, creature.Creature_id, "bite", "1d6+1", 20, 2, 2);
+                Create_Default_Attack(user_id, creature.Creature_id, "2 tentacles", "1d3", 20, 2, -3);
+                break;
+            case "Carbuncle":
+                Create_Default_Attack(user_id, creature.Creature_id, "bite", "1d3-3", 20, 2, 1);
+                break;
+            case "Elk":
+                Create_Default_Attack(user_id, creature.Creature_id, "gore", "1d6+2", 20, 2, 3);
+                Create_Default_Attack(user_id, creature.Creature_id, "2 hooves", "1d3+1", 20, 2, -2);
+                break;
+            case "Chupacabra":
+                Create_Default_Attack(user_id, creature.Creature_id, "bite", "1d4+1", 20, 2, 6);
+                Create_Default_Attack(user_id, creature.Creature_id, "2 claws", "1d3+1", 20, 2, 6);
+                break;
+            case "Havero":
+                Create_Default_Attack(user_id, creature.Creature_id, "tentacle", "2d6+14", 20, 2, 31);
+                Create_Default_Attack(user_id, creature.Creature_id, "claw", "2d6+14", 18, 2, 31);
+                Create_Default_Attack(user_id, creature.Creature_id, "sting", "2d6+14", 20, 2, 31);
+                Create_Default_Attack(user_id, creature.Creature_id, "pincer", "4d6+14", 19, 2, 31);
+                break;
+        }
+
+    }
+
+    private static void Create_Default_Attack(int user_id, int creature_id, string attack_name, string attack_damage, int critical_threshold, int critical_multiplier, int attack_modifier)
+    {
+        using (SqlConnection cn = new SqlConnection(WebConfigurationManager.ConnectionStrings["TableTop_DB"].ConnectionString))
+        {
+            try {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Attacks(creature_id, attack_name, attack_damage, critical_threshold, critical_multiplier, attack_modifier, user_id) VALUES (@creature_id, @attack_name, @attack_damage, @critical_threshold, @critical_multiplier, @attack_modifier, @user_id)", cn);
+                cmd.Parameters.AddWithValue("@creature_id", creature_id);
+                cmd.Parameters.AddWithValue("@attack_name", attack_name);
+                cmd.Parameters.AddWithValue("@attack_damage", attack_damage);
+                cmd.Parameters.AddWithValue("@critical_threshold", critical_threshold);
+                cmd.Parameters.AddWithValue("@critical_multiplier", critical_multiplier);
+                cmd.Parameters.AddWithValue("@attack_modifier", attack_modifier);
+                cmd.Parameters.AddWithValue("@user_id", user_id);
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                e.ToString();
+            }
+        }
+    }
+
 
     public static SqlConnection Setup_Connection()
     {
