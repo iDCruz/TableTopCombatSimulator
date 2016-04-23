@@ -88,4 +88,21 @@ public partial class MonsterList : System.Web.UI.Page
         TextBox CreatureID = Attack_Insert.FindControl("creature_idTextBox") as TextBox;
         CreatureID.Text = creature_id;
     }
+
+    protected void Monster_Insert_ItemInserting(object sender, FormViewInsertEventArgs e)
+    {
+        //prevent user from adding monsters with same name
+        var dropDownList = Attack_Insert.FindControl("creature_DropDownList") as DropDownList;
+        TextBox monsterName = Monster_Insert.FindControl("creature_nameTextBox") as TextBox;
+        if (dropDownList.Items.FindByText(monsterName.Text) != null)
+        {
+            e.Cancel = true;
+            MonsterErrorLabel.Visible = true;
+            MonsterErrorLabel.Text = "Cannot have two monsters with the same name";
+        }
+        else
+        {
+            MonsterErrorLabel.Visible = false;
+        }
+    }
 }

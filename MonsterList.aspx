@@ -53,7 +53,7 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:FormView ID="Monster_Insert" runat="server" DataKeyNames="creature_id" DefaultMode="Insert" OnItemCreated="Monster_Insert_ItemCreated" BorderStyle="Solid" DataSourceID="Insert_Creature">
+        <asp:FormView ID="Monster_Insert" runat="server" DataKeyNames="creature_id" DefaultMode="Insert" OnItemCreated="Monster_Insert_ItemCreated" BorderStyle="Solid" DataSourceID="Insert_Creature" OnItemInserting="Monster_Insert_ItemInserting" >
             <InsertItemTemplate>
                 <asp:TextBox ID="user_idTextBox" runat="server" Text='<%# Bind("user_id") %>' Visible="false"/>
                 <br />
@@ -73,6 +73,7 @@
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </InsertItemTemplate>
         </asp:FormView>
+        <asp:Label runat="server" ID="MonsterErrorLabel" Font-Bold="true" ForeColor="Red" Visible="false"></asp:Label>
         <asp:SqlDataSource ID="Insert_Creature" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" InsertCommand="INSERT INTO Creatures(user_id, creature_name, hit_points, initiative, armor_class) VALUES (@user_id, @creature_name, @hit_points, @initiative, @armor_class)" SelectCommand="SELECT Creatures.* FROM Creatures">
             <InsertParameters>
                 <asp:Parameter Name="user_id" />
