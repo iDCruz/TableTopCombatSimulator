@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,7 +26,10 @@ public partial class _Default : System.Web.UI.Page
         else
         {
             error_lbl.Text = "Registration successful";
+            Creatures_Query.Create_Default_Creatures(Users_Query.Get_User_ID(out error_msg, tb_user.Text, tb_pass.Text));
         }
+
+        
 
     }
 
