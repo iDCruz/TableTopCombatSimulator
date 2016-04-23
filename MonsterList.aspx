@@ -18,22 +18,28 @@
                 <br />
                 attack_name:
                 <asp:TextBox ID="attack_nameTextBox" runat="server" Text='<%# Bind("attack_name") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_nameTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack name is required"></asp:RequiredFieldValidator>
                 <br />
                 attack_modifier:
-                <asp:TextBox ID="attack_modifierTextBox" runat="server" Text='<%# Bind("attack_modifier") %>' />
+                <asp:TextBox TextMode="Number" ID="attack_modifierTextBox" runat="server" Text='<%# Bind("attack_modifier") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_modifierTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack modifier is required"></asp:RequiredFieldValidator>
                 <br />
                 attack_damage:
                 <asp:TextBox ID="attack_damageTextBox" runat="server" Text='<%# Bind("attack_damage") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack damage is required"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack damage must be in the format idi where i is an integer" ValidationExpression="^-?\d+d-?\d+$"></asp:RegularExpressionValidator>
                 <br />
                 critical_threshold:
-                <asp:TextBox ID="critical_thresholdTextBox" runat="server" Text='<%# Bind("critical_threshold") %>' />
+                <asp:TextBox TextMode="Number" ID="critical_thresholdTextBox" runat="server" Text='<%# Bind("critical_threshold") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="critical_thresholdTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Critical threshold is required"></asp:RequiredFieldValidator>
                 <br />
                 critical_multiplier:
-                <asp:TextBox ID="critical_multiplierTextBox" runat="server" Text='<%# Bind("critical_multiplier") %>' />
+                <asp:TextBox TextMode="Number" ID="critical_multiplierTextBox" runat="server" Text='<%# Bind("critical_multiplier") %>' />
+                <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="critical_multiplierTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Critical multiplier is required"></asp:RequiredFieldValidator>
                 <br />
                 <asp:TextBox ID="user_idTextBox" runat="server" Text='<%# Bind("user_id") %>' Visible="false" />
                 <asp:TextBox ID="creature_idTextBox" runat="server" Text='<%# Bind("creature_id") %>' Visible="false" />
-                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                <asp:LinkButton ID="InsertButton" ValidationGroup="AttackInsert" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </InsertItemTemplate>
         </asp:FormView>
