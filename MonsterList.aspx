@@ -10,13 +10,13 @@
 <body>
     <form id="form1" runat="server">
     <div class="center">
-        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub"/>
+        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub" OnClick="menub1_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub2" runat="server" Text="Fight Simulator" CssClass="menub"/>
+        <asp:Button ID="menub2" runat="server" Text="Fight Simulator" CssClass="menub" OnClick="menub2_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub"/>
+        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub" OnClick="menub3_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub"/>
+        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub" OnClick="menub4_Click" />
         </div>
     <h1 class="center">Add and View Data</h1>
     <br />

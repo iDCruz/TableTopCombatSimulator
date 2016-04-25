@@ -14,22 +14,22 @@ public partial class FightHistory : System.Web.UI.Page
 
     protected void menub1_Click(object sender, EventArgs e)
     {
-        Server.Transfer("MonsterList.aspx", true);
+        Response.Redirect("~/MonsterList.aspx", true);
     }
 
     protected void menub2_Click(object sender, EventArgs e)
     {
-        Server.Transfer("Fight.aspx", true);
+        Response.Redirect("~/Fight.aspx", true);
     }
 
     protected void menub3_Click(object sender, EventArgs e)
     {
-        Server.Transfer("FightHistory.aspx", true);
+        Response.Redirect("~/FightHistory.aspx", true);
     }
 
     protected void menub4_Click(object sender, EventArgs e)
     {
         Session["User_id"] = null;
-        Server.Transfer("Default.aspx", true);
+        Response.Redirect("~/Default.aspx", true);
     }
 }

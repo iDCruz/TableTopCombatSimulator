@@ -15,13 +15,13 @@
 <body>
     <form id="form1" runat="server">
     <div class="center">
-        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub"/>
+        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub" OnClick="menub1_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub2" runat="server" Text="Fight Simulator" CssClass="menub"/>
+        <asp:Button ID="menub2" runat="server" Text="Fight Simulator" CssClass="menub" OnClick="menub2_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub"/>
+        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub" OnClick="menub3_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub"/>
+        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub" OnClick="menub4_Click" />
         </div>
     <h1 class="center">Fight Simulator</h1>
     <div class="center">
@@ -35,12 +35,14 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="Fight_btn" runat="server" Text="Fight" OnClick="Fight_Click" />
+        <asp:Button ID="Fight_btn" runat="server" Text="Fight" OnClick="Fight_Click" CssClass="menub" />
         <asp:SqlDataSource ID="Creature_Select" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" SelectCommand="SELECT [creature_name] FROM [Creatures] WHERE ([user_id] = @User_id)">
         <SelectParameters>
             <asp:sessionparameter Name="User_id" SessionField="User_id" Type="Int32" />
         </SelectParameters>
         </asp:SqlDataSource>          
+        <br />
+        <br />
     <div style="background-color:#FFF6E6; display:inline-block; margin:0 auto; padding:8px; border:solid 2px black;" class="auto-style1">
         <h2 style="text-align: center">Fight Results</h2>
         <div class="auto-style1">
