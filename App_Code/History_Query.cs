@@ -7,7 +7,7 @@ using System.Web.Configuration;
 
 public class History_Query
 {
-    public static void Record_Combat_Results(int user_id, int creature_1_id, int creature_2_id, float creature_1_hr, float creature_2_hr, float creature_1_dr, float creature_2_dr, float creature_1_wr, float creature_2_wr)
+    public static void Record_Combat_Results(int user_id, int creature_1_id, int creature_2_id, decimal creature_1_hr, decimal creature_2_hr, decimal creature_1_dr, decimal creature_2_dr, decimal creature_1_wr, decimal creature_2_wr)
     {
         using (SqlConnection cn = new SqlConnection(WebConfigurationManager.ConnectionStrings["TableTop_DB"].ConnectionString))
         {

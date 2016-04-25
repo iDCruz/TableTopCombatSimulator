@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+    <form id="form1" runat="server">
     <div class="center">
         <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -23,7 +24,6 @@
         <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub"/>
         </div>
     <h1 class="center">Fight Simulator</h1>
-    <form id="form1" runat="server">
     <div class="center">
 &nbsp;<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="Creature_Select" DataTextField="creature_name" DataValueField="creature_name" AppendDataBoundItems="True">
             <asp:ListItem>Select Creature</asp:ListItem>

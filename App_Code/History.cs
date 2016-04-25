@@ -10,12 +10,12 @@ public class History
     private int user_id;
     private int creature_1_id;
     private int creature_2_id;
-    private float creature_1_hit_rate;
-    private float creature_2_hit_rate;
-    private float creature_1_damage_rate;
-    private float creature_2_damage_rate;
-    private float creature_1_win_rate;
-    private float creature_2_win_rate;
+    private decimal creature_1_hit_rate;
+    private decimal creature_2_hit_rate;
+    private decimal creature_1_damage_rate;
+    private decimal creature_2_damage_rate;
+    private decimal creature_1_win_rate;
+    private decimal creature_2_win_rate;
 
     public History(SqlDataReader rdr)
     {
@@ -23,12 +23,12 @@ public class History
         user_id = (int)rdr["User_id"];
         creature_1_id = (int)rdr["Creature_1_id"];
         creature_2_id = (int)rdr["Creature_2_id"];
-        creature_1_hit_rate = (float)rdr["Creature_1_hit_rate"];
-        creature_2_hit_rate = (float)rdr["Creature_2_hit_rate"];
-        creature_1_damage_rate = (float)rdr["Creature_1_damage_rate"];
-        creature_2_damage_rate = (float)rdr["Creature_2_damage_rate"];
-        creature_1_win_rate = (float)rdr["Creature_1_win_rate"];
-        creature_2_win_rate = (float)rdr["Creature_2_win_rate"];
+        creature_1_hit_rate = (decimal)rdr["Creature_1_hit_rate"];
+        creature_2_hit_rate = (decimal)rdr["Creature_2_hit_rate"];
+        creature_1_damage_rate = (decimal)rdr["Creature_1_damage_rate"];
+        creature_2_damage_rate = (decimal)rdr["Creature_2_damage_rate"];
+        creature_1_win_rate = (decimal)rdr["Creature_1_win_rate"];
+        creature_2_win_rate = (decimal)rdr["Creature_2_win_rate"];
     }
 
     public int Fight_id
@@ -83,7 +83,7 @@ public class History
         }
     }
 
-    public float Creature_1_hit_rate
+    public decimal Creature_1_hit_rate
     {
         get
         {
@@ -96,7 +96,7 @@ public class History
         }
     }
 
-    public float Creature_2_hit_rate
+    public decimal Creature_2_hit_rate
     {
         get
         {
@@ -109,7 +109,7 @@ public class History
         }
     }
 
-    public float Creature_1_damage_rate
+    public decimal Creature_1_damage_rate
     {
         get
         {
@@ -122,7 +122,7 @@ public class History
         }
     }
 
-    public float Creature_2_damge_rate
+    public decimal Creature_2_damge_rate
     {
         get
         {
@@ -135,7 +135,7 @@ public class History
         }
     }
 
-    public float Creature_1_win_rate
+    public decimal Creature_1_win_rate
     {
         get
         {
@@ -148,7 +148,7 @@ public class History
         }
     }
 
-    public float Creature_2_win_rate
+    public decimal Creature_2_win_rate
     {
         get
         {

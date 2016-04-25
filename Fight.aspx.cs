@@ -140,11 +140,11 @@ public partial class Fight : System.Web.UI.Page
         }
 
         //Finalize win rate
-        creature_1_win_rate = creature_1_win_rate / number_of_fights_total;
-        creature_2_win_rate = creature_2_win_rate / number_of_fights_total;
+        decimal final_creature_1_win_rate = (Math.Round((decimal)(creature_1_win_rate / number_of_fights_total), 2) * 100);
+        decimal final_creature_2_win_rate = (Math.Round((decimal)(creature_2_win_rate / number_of_fights_total), 2) * 100);
 
-        Win_Rate_1.Text = (Math.Round(creature_1_win_rate, 2) * 100).ToString() + "%";
-        Win_Rate_2.Text = (Math.Round(creature_2_win_rate, 2) * 100).ToString() + "%";
+        Win_Rate_1.Text = final_creature_1_win_rate.ToString() + "%";
+        Win_Rate_2.Text = final_creature_2_win_rate.ToString() + "%";
 
         creature_1_hit_rate = 0.0F;
         creature_2_hit_rate = 0.0F;
@@ -168,12 +168,19 @@ public partial class Fight : System.Web.UI.Page
             creature_2_damage_rate += i;
         }
 
-        Accuracy_1.Text = (Math.Round((creature_1_hit_rate/creature_1_hit_rate_list.Count()), 2) * 100).ToString() + "%";
-        Accuracy_2.Text = (Math.Round((creature_2_hit_rate/creature_2_hit_rate_list.Count()), 2) * 100).ToString() + "%";
-        Damage_1.Text = (Math.Round((creature_1_damage_rate/creature_1_damage_rate_list.Count()), 2)).ToString();
-        Damage_2.Text = (Math.Round((creature_2_damage_rate / creature_2_damage_rate_list.Count()), 2)).ToString();
+        Decimal final_creature_1_hit_rate = (Math.Round((decimal)(creature_1_hit_rate / creature_1_hit_rate_list.Count()), 2) * 100);
+        Accuracy_1.Text = final_creature_1_hit_rate.ToString() + "%";
 
-        History_Query.Record_Combat_Results((int)Session["User_id"],creature1.Creature_id, creature2.Creature_id, creature_1_hit_rate, creature_2_hit_rate, creature_1_damage_rate, creature_2_damage_rate, creature_1_win_rate, creature_2_win_rate);
+        Decimal final_creature_2_hit_rate = (Math.Round((decimal)(creature_2_hit_rate/creature_2_hit_rate_list.Count()), 2) * 100);
+        Accuracy_2.Text = final_creature_2_hit_rate.ToString() + "%";
+
+        Decimal final_creature_1_damage_rate = (Math.Round((decimal)(creature_1_damage_rate / creature_1_damage_rate_list.Count()), 2));
+        Damage_1.Text = final_creature_1_damage_rate.ToString();
+
+        Decimal final_creature_2_damage_rate = (Math.Round((decimal)(creature_2_damage_rate / creature_2_damage_rate_list.Count()), 2));
+        Damage_2.Text = final_creature_2_damage_rate.ToString();
+
+        History_Query.Record_Combat_Results((int)Session["User_id"],creature1.Creature_id, creature2.Creature_id, final_creature_1_hit_rate, final_creature_2_hit_rate, final_creature_1_damage_rate, final_creature_2_damage_rate, final_creature_1_win_rate, final_creature_2_win_rate);
     }
 
     protected float[] Attack(Creatures attacking_creature, List<Attacks> attackers_attacks, Creatures attacked_creature, 
