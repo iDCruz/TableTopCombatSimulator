@@ -82,7 +82,7 @@ public class Attacks_Query
         {
             case "Akata":
                 Create_Default_Attack(user_id, creature.Creature_id, "bite", "1d6+1", 20, 2, 2);
-                Create_Default_Attack(user_id, creature.Creature_id, "2 tentacles", "1d3", 20, 2, -3);
+                Create_Default_Attack(user_id, creature.Creature_id, "2 tentacles", "1d3+0", 20, 2, -3);
                 break;
             case "Carbuncle":
                 Create_Default_Attack(user_id, creature.Creature_id, "bite", "1d3-3", 20, 2, 1);
