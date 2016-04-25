@@ -10,13 +10,13 @@
 <body>
     <form id="form1" runat="server">
     <div class="center">
-        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub" OnClick="menub1_Click" />
+        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub2" runat="server" Text="Fight Simluator" CssClass="menub" OnClick="menub2_Click" />
+        <asp:Button ID="menub2" runat="server" Text="Fight Simluator" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub" OnClick="menub3_Click" />
+        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub" OnClick="menub4_Click" />
+        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub"/>
         </div>
     <h1 class="center">Add and View Data</h1>
     <br />
@@ -24,7 +24,6 @@
     <div>
         <asp:FormView ID="Attack_Insert" runat="server" DefaultMode="Insert" BorderStyle="None" OnItemCreated="Attack_Insert_ItemCreated" DataSourceID="Attack_Insert_Source">
             <InsertItemTemplate>
-                Creature:
                 <asp:DropDownList ID="creature_DropDownList" runat="server" AppendDataBoundItems="false" DataSourceID="Monster_Name_Source" DataTextField="creature_name" DataValueField="creature_id" OnSelectedIndexChanged="creature_DropDownList_SelectedIndexChanged" AutoPostBack="true"/>
                 <br />
                 <asp:TextBox ID="attack_nameTextBox" runat="server" Text='<%# Bind("attack_name") %>' placeholder="Attack name"/>

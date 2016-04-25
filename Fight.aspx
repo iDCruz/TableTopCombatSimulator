@@ -14,13 +14,13 @@
 </head>
 <body>
     <div class="center">
-        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub" OnClick="menub1_Click" />
+        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub2" runat="server" Text="Fight Simluator" CssClass="menub" OnClick="menub2_Click" />
+        <asp:Button ID="menub2" runat="server" Text="Fight Simluator" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub" OnClick="menub3_Click" />
+        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub" OnClick="menub4_Click" />
+        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub"/>
         </div>
     <h1 class="center">Fight Simulator</h1>
     <form id="form1" runat="server">
