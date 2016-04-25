@@ -8,6 +8,15 @@
     <link href="StyleSheet.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="center">
+    <div class="center">
+        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub" OnClick="menub1_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="menub2" runat="server" Text="Fight Simluator" CssClass="menub" OnClick="menub2_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub" OnClick="menub3_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub" OnClick="menub4_Click" />
+        </div>
     <h1>Fight History</h1>
     <form id="form1" runat="server">
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="fight_id" DataSourceID="Fight_History_Source" CssClass="grid">

@@ -302,4 +302,25 @@ public partial class Fight : System.Web.UI.Page
 
         return creature_1_goes_first;
     }
+
+    protected void menub1_Click(object sender, EventArgs e)
+    {
+        Server.Transfer("MonsterList.aspx", true);
+    }
+
+    protected void menub2_Click(object sender, EventArgs e)
+    {
+        Server.Transfer("Fight.aspx", true);
+    }
+
+    protected void menub3_Click(object sender, EventArgs e)
+    {
+        Server.Transfer("FightHistory.aspx", true);
+    }
+
+    protected void menub4_Click(object sender, EventArgs e)
+    {
+        Session["User_id"] = null;
+        Server.Transfer("Default.aspx", true);
+    }
 }
