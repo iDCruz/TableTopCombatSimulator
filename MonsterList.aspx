@@ -8,34 +8,38 @@
     <link href="StyleSheet.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
+    <form id="form1" runat="server">
+    <div class="center">
+        <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub" OnClick="menub1_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="menub2" runat="server" Text="Fight Simluator" CssClass="menub" OnClick="menub2_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub" OnClick="menub3_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="menub4" runat="server" Text="Log Out" CssClass="menub" OnClick="menub4_Click" />
+        </div>
     <h1 class="center">Add and View Data</h1>
     <br />
     <h2>Add Weapon or Attack</h2>
-    <form id="form1" runat="server">
     <div>
         <asp:FormView ID="Attack_Insert" runat="server" DefaultMode="Insert" BorderStyle="None" OnItemCreated="Attack_Insert_ItemCreated" DataSourceID="Attack_Insert_Source">
             <InsertItemTemplate>
                 Creature:
                 <asp:DropDownList ID="creature_DropDownList" runat="server" AppendDataBoundItems="false" DataSourceID="Monster_Name_Source" DataTextField="creature_name" DataValueField="creature_id" OnSelectedIndexChanged="creature_DropDownList_SelectedIndexChanged" AutoPostBack="true"/>
                 <br />
-                Attack Name:
                 <asp:TextBox ID="attack_nameTextBox" runat="server" Text='<%# Bind("attack_name") %>' placeholder="Attack name"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_nameTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack name is required"></asp:RequiredFieldValidator>
                 <br />
-                Attack Modifier:
                 <asp:TextBox TextMode="Number" ID="attack_modifierTextBox" runat="server" Text='<%# Bind("attack_modifier") %>' placeholder="Attack modifier"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_modifierTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack modifier is required"></asp:RequiredFieldValidator>
                 <br />
-                Damage:
                 <asp:TextBox ID="attack_damageTextBox" runat="server" Text='<%# Bind("attack_damage") %>' placeholder="Damage (XdX+X)"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Required; "></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Must be in the format XdX +/- X where all Xs are integers" ValidationExpression="^\dd\d[+-]{1}\d$"></asp:RegularExpressionValidator>
                 <br />
-                Critical Threshold:
                 <asp:TextBox TextMode="Number" ID="critical_thresholdTextBox" runat="server" Text='<%# Bind("critical_threshold") %>' placeholder="Critical threshold"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="critical_thresholdTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Critical threshold is required"></asp:RequiredFieldValidator>
                 <br />
-                Critical Multiplier:
                 <asp:TextBox TextMode="Number" ID="critical_multiplierTextBox" runat="server" Text='<%# Bind("critical_multiplier") %>' placeholder="Critical multiplier"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="critical_multiplierTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Critical multiplier is required"></asp:RequiredFieldValidator>
                 <br />
@@ -66,19 +70,15 @@
             <InsertItemTemplate>
                 <asp:TextBox ID="user_idTextBox" runat="server" Text='<%# Bind("user_id") %>' Visible="false"/>
                 <br />
-                creature_name:
                 <asp:TextBox ID="creature_nameTextBox" runat="server" Text='<%# Bind("creature_name") %>' placeholder="Creature name"/>
                 <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server"  ControlToValidate="creature_nameTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Creature name is required"></asp:RequiredFieldValidator>
                 <br />
-                initiative:
                 <asp:TextBox TextMode="Number" ID="initiativeTextBox" runat="server" Text='<%# Bind("initiative") %>' placeholder="Initiative modifier"/>
                 <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="initiativeTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Initiative is required"></asp:RequiredFieldValidator>
                 <br />
-                hit_points:
                 <asp:TextBox TextMode="Number" ID="hit_pointsTextBox" runat="server" Text='<%# Bind("hit_points") %>' placeholder="Hit points"/>
                 <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="hit_pointsTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Hit points is required"></asp:RequiredFieldValidator>
                 <br />
-                armor_class:
                 <asp:TextBox TextMode="Number" ID="armor_classTextBox" runat="server" Text='<%# Bind("armor_class") %>' placeholder="Armor class"/>
                 <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="armor_classTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Armor class is required"></asp:RequiredFieldValidator>
                 <br />

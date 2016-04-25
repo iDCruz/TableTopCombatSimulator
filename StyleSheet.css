@@ -29,6 +29,14 @@ body {
             margin-top: 0px;
         }
 
+.menub {
+    border: solid 1px black;
+    background-color: #AA8965;
+    color: white;
+    font-family: Calibri;
+    font-weight: bold;
+}
+
 .grid {
     background-color: #fff; 
     border: solid 1px black; 
