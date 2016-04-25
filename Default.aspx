@@ -20,20 +20,23 @@
             <tr>
                 <td>User Name:</td>
                 <td><asp:TextBox ID="tb_user" runat="server"></asp:TextBox></td>
-                <td><asp:RequiredFieldValidator ID="user_name_validator" runat="server" ControlToValidate="tb_user" ErrorMessage="User Name Required" ForeColor="Red"></asp:RequiredFieldValidator></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>Password:</td>
                 <td><asp:TextBox ID="tb_pass" TextMode="Password" runat="server"></asp:TextBox></td>
-                <td><asp:RequiredFieldValidator ID="password_validator" runat="server" ControlToValidate="tb_pass" ErrorMessage="Password Required" ForeColor="Red"></asp:RequiredFieldValidator></td>
+                <td>&nbsp;</td>
             </tr>
         </table>
+        <asp:RequiredFieldValidator ID="user_name_validator" runat="server" ControlToValidate="tb_user" ErrorMessage="User Name Required" ForeColor="Red"></asp:RequiredFieldValidator>
+        <br />
+        <asp:RequiredFieldValidator ID="password_validator" runat="server" ControlToValidate="tb_pass" ErrorMessage="Password Required" ForeColor="Red"></asp:RequiredFieldValidator>
         <br />
         <br />
-        <asp:Button ID="btn_login" runat="server" OnClick="btn_login_Click" Text="Login" />
+        <asp:Button ID="btn_login" runat="server" OnClick="btn_login_Click" Text="Login" CssClass="menub" />
         <br />
         <br />
-        <asp:Button ID="btn_register" runat="server" OnClick="btn_register_Click" Text="Register" />
+        <asp:Button ID="btn_register" runat="server" OnClick="btn_register_Click" Text="Register" CssClass="menub" />
     </form>
     <footer>
         <br />

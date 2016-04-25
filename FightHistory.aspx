@@ -11,7 +11,7 @@
     <div class="center">
         <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub" OnClick="menub1_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub2" runat="server" Text="Fight Simluator" CssClass="menub" OnClick="menub2_Click" />
+        <asp:Button ID="menub2" runat="server" Text="Fight Simulator" CssClass="menub" OnClick="menub2_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub" OnClick="menub3_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -19,7 +19,8 @@
         </div>
     <h1>Fight History</h1>
     <form id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="fight_id" DataSourceID="Fight_History_Source" CssClass="grid">
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="fight_id" DataSourceID="Fight_History_Source" 
+            CssClass="grid" PagerStyle-CssClass="pgr">
             <RowStyle CssClass="row" />
             <AlternatingRowStyle CssClass="altrow" />
             <Columns>
@@ -37,6 +38,14 @@
                 <asp:BoundField ItemStyle-CssClass="creature1" DataField="creature_1_win_rate" HeaderText="Creature 1 Win %" SortExpression="creature_1_win_rate" />
                 <asp:BoundField ItemStyle-CssClass="creature2" DataField="creature_2_win_rate" HeaderText="Creature 2 Win %" SortExpression="creature_2_win_rate" />
             </Columns>
+            <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+            <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+            <PagerStyle ForeColor="#F3E2D0" HorizontalAlign="Center" VerticalAlign="Middle"/>
+            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#FFF1D4" />
+            <SortedAscendingHeaderStyle BackColor="#B95C30" />
+            <SortedDescendingCellStyle BackColor="#F1E5CE" />
+            <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
         <asp:SqlDataSource ID="Fight_History_Source" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" DeleteCommand="DELETE FROM [History] WHERE [fight_id] = @fight_id" SelectCommand="SELECT History.*, A.creature_name As creature_1_name, B.creature_name As creature_2_name FROM History,Creatures As A,Creatures As B WHERE History.creature_1_id = A.creature_id AND History.creature_2_id = B.creature_id ">
             <DeleteParameters>

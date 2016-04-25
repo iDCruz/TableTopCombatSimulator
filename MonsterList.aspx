@@ -12,7 +12,7 @@
     <div class="center">
         <asp:Button ID="menub1" runat="server" Text="Data" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="menub2" runat="server" Text="Fight Simluator" CssClass="menub"/>
+        <asp:Button ID="menub2" runat="server" Text="Fight Simulator" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="menub3" runat="server" Text="Fight History" CssClass="menub"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
