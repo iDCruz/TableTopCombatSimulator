@@ -10,10 +10,11 @@
 <body class="center">
     <h1>Fight History</h1>
     <form id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="fight_id" DataSourceID="Fight_History_Source" CssClass="grid">
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="fight_id" DataSourceID="Fight_History_Source" CssClass="grid">
             <RowStyle CssClass="row" />
             <AlternatingRowStyle CssClass="altrow" />
             <Columns>
+                <asp:CommandField ShowDeleteButton="True" />
                 <asp:BoundField DataField="fight_id" HeaderText="Fight ID" InsertVisible="False" ReadOnly="True" SortExpression="fight_id" />
                 <asp:BoundField DataField="user_id" HeaderText="user_id" SortExpression="user_id" Visible="false" />
                 <asp:BoundField ItemStyle-CssClass="creature1" DataField="creature_1_name" HeaderText="Creature 1" SortExpression="creature_1_name" />
@@ -28,7 +29,11 @@
                 <asp:BoundField ItemStyle-CssClass="creature2" DataField="creature_2_win_rate" HeaderText="Creature 2 Win %" SortExpression="creature_2_win_rate" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="Fight_History_Source" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" SelectCommand="SELECT History.*, A.creature_name As creature_1_name, B.creature_name As creature_2_name FROM History,Creatures As A,Creatures As B WHERE History.creature_1_id = A.creature_id AND History.creature_2_id = B.creature_id "></asp:SqlDataSource>
+        <asp:SqlDataSource ID="Fight_History_Source" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" DeleteCommand="DELETE FROM [History] WHERE [fight_id] = @fight_id" SelectCommand="SELECT History.*, A.creature_name As creature_1_name, B.creature_name As creature_2_name FROM History,Creatures As A,Creatures As B WHERE History.creature_1_id = A.creature_id AND History.creature_2_id = B.creature_id ">
+            <DeleteParameters>
+                <asp:Parameter Name="fight_id" Type="Int32" />
+            </DeleteParameters>
+        </asp:SqlDataSource>
     </form>
     <footer>
         <br />

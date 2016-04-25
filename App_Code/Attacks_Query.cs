@@ -82,18 +82,21 @@ public class Attacks_Query
         {
             case "Akata":
                 Create_Default_Attack(user_id, creature.Creature_id, "bite", "1d6+1", 20, 2, 2);
-                Create_Default_Attack(user_id, creature.Creature_id, "2 tentacles", "1d3+0", 20, 2, -3);
+                Create_Default_Attack(user_id, creature.Creature_id, "tentacle", "1d3+0", 20, 2, -3);
+                Create_Default_Attack(user_id, creature.Creature_id, "tentacle", "1d3+0", 20, 2, -3);
                 break;
             case "Carbuncle":
                 Create_Default_Attack(user_id, creature.Creature_id, "bite", "1d3-3", 20, 2, 1);
                 break;
             case "Elk":
                 Create_Default_Attack(user_id, creature.Creature_id, "gore", "1d6+2", 20, 2, 3);
-                Create_Default_Attack(user_id, creature.Creature_id, "2 hooves", "1d3+1", 20, 2, -2);
+                Create_Default_Attack(user_id, creature.Creature_id, "hoof", "1d3+1", 20, 2, -2);
+                Create_Default_Attack(user_id, creature.Creature_id, "hoof", "1d3+1", 20, 2, -2);
                 break;
             case "Chupacabra":
                 Create_Default_Attack(user_id, creature.Creature_id, "bite", "1d4+1", 20, 2, 6);
-                Create_Default_Attack(user_id, creature.Creature_id, "2 claws", "1d3+1", 20, 2, 6);
+                Create_Default_Attack(user_id, creature.Creature_id, "claw", "1d3+1", 20, 2, 6);
+                Create_Default_Attack(user_id, creature.Creature_id, "claw", "1d3+1", 20, 2, 6);
                 break;
             case "Havero":
                 Create_Default_Attack(user_id, creature.Creature_id, "tentacle", "2d6+14", 20, 2, 31);
