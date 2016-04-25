@@ -34,6 +34,11 @@
         </asp:DropDownList>
         <br />
         <br />
+        <asp:TextBox TextMode="Number" ID="tbNumFights" runat="server" placeholder="# of fights to simulate?"/>
+        <br />
+        <asp:CompareValidator ID="CompareValidator_tbNumFights" runat="server" Operator="DataTypeCheck" Display="Dynamic" Type="Integer" ForeColor="Red" ErrorMessage="Must be an integer" ControlToValidate="tbNumFights"></asp:CompareValidator>
+        <br />
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator_tbNumFights" runat="server" ControlToValidate="tbNumFights" ErrorMessage="Number of fights is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         <br />
         <asp:Button ID="Fight_btn" runat="server" Text="Fight" OnClick="Fight_Click" CssClass="menub" />
         <asp:SqlDataSource ID="Creature_Select" runat="server" ConnectionString="<%$ ConnectionStrings:TableTop_DB %>" SelectCommand="SELECT [creature_name] FROM [Creatures] WHERE ([user_id] = @User_id)">

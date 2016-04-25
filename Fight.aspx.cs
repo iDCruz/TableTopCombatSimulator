@@ -29,7 +29,7 @@ public partial class Fight : System.Web.UI.Page
 
         //Fight Simulation Var
         Random random = new Random(DateTime.Now.Millisecond);
-        int number_of_fights_total = 1000000;
+        int number_of_fights_total = Int32.Parse(tbNumFights.Text);
         int number_of_fights_count = number_of_fights_total;
         bool creature_1_goes_first = true;
         float[] stats = { 0.0F, 0.0F };
