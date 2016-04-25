@@ -4,10 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Fight Simulator</title>
+    <link href="StyleSheet.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    <h2> Fight Simulator Page </h2>
+    <h1>Fight Simulator</h1>
     <form id="form1" runat="server">
     <div>
     

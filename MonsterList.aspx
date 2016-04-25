@@ -4,37 +4,39 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Monster List</title>
+    <link href="StyleSheet.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    <h2> Monster List Page </h2>
-    <p> &nbsp;</p>
+    <h1 class="center">Add and View Data</h1>
+    <br />
+    <h2>Add Weapon or Attack</h2>
     <form id="form1" runat="server">
     <div>
-        <asp:FormView ID="Attack_Insert" runat="server" DefaultMode="Insert" BorderStyle="Solid" OnItemCreated="Attack_Insert_ItemCreated" DataSourceID="Attack_Insert_Source">
+        <asp:FormView ID="Attack_Insert" runat="server" DefaultMode="Insert" BorderStyle="None" OnItemCreated="Attack_Insert_ItemCreated" DataSourceID="Attack_Insert_Source">
             <InsertItemTemplate>
-                creature:
+                Creature:
                 <asp:DropDownList ID="creature_DropDownList" runat="server" AppendDataBoundItems="false" DataSourceID="Monster_Name_Source" DataTextField="creature_name" DataValueField="creature_id" OnSelectedIndexChanged="creature_DropDownList_SelectedIndexChanged" AutoPostBack="true"/>
                 <br />
-                attack_name:
-                <asp:TextBox ID="attack_nameTextBox" runat="server" Text='<%# Bind("attack_name") %>' />
+                Attack Name:
+                <asp:TextBox ID="attack_nameTextBox" runat="server" Text='<%# Bind("attack_name") %>' placeholder="Attack name"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_nameTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack name is required"></asp:RequiredFieldValidator>
                 <br />
-                attack_modifier:
-                <asp:TextBox TextMode="Number" ID="attack_modifierTextBox" runat="server" Text='<%# Bind("attack_modifier") %>' />
+                Attack Modifier:
+                <asp:TextBox TextMode="Number" ID="attack_modifierTextBox" runat="server" Text='<%# Bind("attack_modifier") %>' placeholder="Attack modifier"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_modifierTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack modifier is required"></asp:RequiredFieldValidator>
                 <br />
-                attack_damage:
-                <asp:TextBox ID="attack_damageTextBox" runat="server" Text='<%# Bind("attack_damage") %>' />
-                <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack damage is required"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Attack damage must be in the format idi +/- i where i is an integer" ValidationExpression="^\dd\d[+-]{1}\d$"></asp:RegularExpressionValidator>
+                Damage:
+                <asp:TextBox ID="attack_damageTextBox" runat="server" Text='<%# Bind("attack_damage") %>' placeholder="Damage (XdX+X)"/>
+                <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Required; "></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="attack_damageTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Must be in the format XdX +/- X where all Xs are integers" ValidationExpression="^\dd\d[+-]{1}\d$"></asp:RegularExpressionValidator>
                 <br />
-                critical_threshold:
-                <asp:TextBox TextMode="Number" ID="critical_thresholdTextBox" runat="server" Text='<%# Bind("critical_threshold") %>' />
+                Critical Threshold:
+                <asp:TextBox TextMode="Number" ID="critical_thresholdTextBox" runat="server" Text='<%# Bind("critical_threshold") %>' placeholder="Critical threshold"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="critical_thresholdTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Critical threshold is required"></asp:RequiredFieldValidator>
                 <br />
-                critical_multiplier:
-                <asp:TextBox TextMode="Number" ID="critical_multiplierTextBox" runat="server" Text='<%# Bind("critical_multiplier") %>' />
+                Critical Multiplier:
+                <asp:TextBox TextMode="Number" ID="critical_multiplierTextBox" runat="server" Text='<%# Bind("critical_multiplier") %>' placeholder="Critical multiplier"/>
                 <asp:RequiredFieldValidator ValidationGroup="AttackInsert" runat="server" ControlToValidate="critical_multiplierTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Critical multiplier is required"></asp:RequiredFieldValidator>
                 <br />
                 <asp:TextBox ID="user_idTextBox" runat="server" Text='<%# Bind("user_id") %>' Visible="false" />
@@ -59,24 +61,25 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:FormView ID="Monster_Insert" runat="server" DataKeyNames="creature_id" DefaultMode="Insert" OnItemCreated="Monster_Insert_ItemCreated" BorderStyle="Solid" DataSourceID="Insert_Creature" OnItemInserting="Monster_Insert_ItemInserting" >
+        <h2>Add Creature</h2>
+        <asp:FormView ID="Monster_Insert" runat="server" DataKeyNames="creature_id" DefaultMode="Insert" OnItemCreated="Monster_Insert_ItemCreated" BorderStyle="None" DataSourceID="Insert_Creature" OnItemInserting="Monster_Insert_ItemInserting" >
             <InsertItemTemplate>
                 <asp:TextBox ID="user_idTextBox" runat="server" Text='<%# Bind("user_id") %>' Visible="false"/>
                 <br />
                 creature_name:
-                <asp:TextBox ID="creature_nameTextBox" runat="server" Text='<%# Bind("creature_name") %>' />
+                <asp:TextBox ID="creature_nameTextBox" runat="server" Text='<%# Bind("creature_name") %>' placeholder="Creature name"/>
                 <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server"  ControlToValidate="creature_nameTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Creature name is required"></asp:RequiredFieldValidator>
                 <br />
                 initiative:
-                <asp:TextBox TextMode="Number" ID="initiativeTextBox" runat="server" Text='<%# Bind("initiative") %>' />
+                <asp:TextBox TextMode="Number" ID="initiativeTextBox" runat="server" Text='<%# Bind("initiative") %>' placeholder="Initiative modifier"/>
                 <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="initiativeTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Initiative is required"></asp:RequiredFieldValidator>
                 <br />
                 hit_points:
-                <asp:TextBox TextMode="Number" ID="hit_pointsTextBox" runat="server" Text='<%# Bind("hit_points") %>' />
+                <asp:TextBox TextMode="Number" ID="hit_pointsTextBox" runat="server" Text='<%# Bind("hit_points") %>' placeholder="Hit points"/>
                 <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="hit_pointsTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Hit points is required"></asp:RequiredFieldValidator>
                 <br />
                 armor_class:
-                <asp:TextBox TextMode="Number" ID="armor_classTextBox" runat="server" Text='<%# Bind("armor_class") %>' />
+                <asp:TextBox TextMode="Number" ID="armor_classTextBox" runat="server" Text='<%# Bind("armor_class") %>' placeholder="Armor class"/>
                 <asp:RequiredFieldValidator ValidationGroup="MonsterInsert" runat="server" ControlToValidate="armor_classTextBox" Display="Dynamic" ForeColor="Red" ErrorMessage="Armor class is required"></asp:RequiredFieldValidator>
                 <br />
                 <asp:LinkButton ValidationGroup="MonsterInsert" ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
@@ -95,20 +98,23 @@
         </asp:SqlDataSource>
         <br />
         <br />
-        <asp:GridView ID="Creature_GridView" OnRowDeleting="Creature_Gridview_OnRowDeleting" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataKeyNames="creature_id" DataSourceID="Creatures_Table">
+        <h2>Monster List</h2>
+        <asp:GridView ID="Creature_GridView" OnRowDeleting="Creature_Gridview_OnRowDeleting" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataKeyNames="creature_id" DataSourceID="Creatures_Table" 
+            CssClass="grid" PagerStyle-CssClass="pgr">
+            <RowStyle CssClass="row" />
+            <AlternatingRowStyle CssClass="altrow" />
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" />
-                <asp:BoundField DataField="creature_id" HeaderText="creature_id" InsertVisible="False" ReadOnly="True" SortExpression="creature_id" />
-                <asp:BoundField DataField="user_id" HeaderText="user_id" SortExpression="user_id" Visible="False" />
-                <asp:BoundField DataField="creature_name" HeaderText="creature_name" SortExpression="creature_name" />
-                <asp:BoundField DataField="hit_points" HeaderText="hit_points" SortExpression="hit_points" />
-                <asp:BoundField DataField="initiative" HeaderText="initiative" SortExpression="initiative" />
-                <asp:BoundField DataField="armor_class" HeaderText="armor_class" SortExpression="armor_class" />
+                <asp:BoundField DataField="creature_id" HeaderText="Creature ID" InsertVisible="False" ReadOnly="True" SortExpression="creature_id" />
+                <asp:BoundField DataField="user_id" HeaderText="User ID" SortExpression="user_id" Visible="False" />
+                <asp:BoundField DataField="creature_name" HeaderText="Creature" SortExpression="creature_name" />
+                <asp:BoundField DataField="hit_points" HeaderText="HP" SortExpression="hit_points" />
+                <asp:BoundField DataField="initiative" HeaderText="Initiative" SortExpression="initiative" />
+                <asp:BoundField DataField="armor_class" HeaderText="Armor Class" SortExpression="armor_class" />
             </Columns>
             <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
             <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
-            <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+            <PagerStyle ForeColor="#F3E2D0" HorizontalAlign="Center" VerticalAlign="Middle"/>
             <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
             <SortedAscendingCellStyle BackColor="#FFF1D4" />
             <SortedAscendingHeaderStyle BackColor="#B95C30" />
@@ -134,22 +140,25 @@
                      />
             </FilterParameters>
         </asp:SqlDataSource>
-        <asp:GridView ID="Attack_GridView" runat="server" AllowPaging="True" AllowSorting="True" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataSourceID="Attacks_Table" style="margin-right: 0px" AutoGenerateColumns="False" DataKeyNames="attack_id">
+        <h2>Weapon/Attack List</h2>
+        <asp:GridView ID="Attack_GridView" runat="server" AllowPaging="True" AllowSorting="True" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataSourceID="Attacks_Table" style="margin-right: 0px" AutoGenerateColumns="False" DataKeyNames="attack_id" 
+            CssClass="grid" PagerStyle-CssClass="pgr">
+            <RowStyle CssClass="row" />
+            <AlternatingRowStyle CssClass="altrow" />
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" />
-                <asp:BoundField DataField="attack_id" HeaderText="attack_id" InsertVisible="False" ReadOnly="True" SortExpression="attack_id" Visible="False" />
-                <asp:BoundField DataField="creature_id" HeaderText="creature_id" SortExpression="creature_id" />
-                <asp:BoundField DataField="attack_name" HeaderText="attack_name" SortExpression="attack_name" />
-                <asp:BoundField DataField="attack_damage" HeaderText="attack_damage" SortExpression="attack_damage" />
-                <asp:BoundField DataField="critical_threshold" HeaderText="critical_threshold" SortExpression="critical_threshold" />
-                <asp:BoundField DataField="critical_multiplier" HeaderText="critical_multiplier" SortExpression="critical_multiplier" />
-                <asp:BoundField DataField="attack_modifier" HeaderText="attack_modifier" SortExpression="attack_modifier" />
-                <asp:BoundField DataField="user_id" HeaderText="user_id" SortExpression="user_id" ReadOnly="True" Visible="False" />
+                <asp:BoundField DataField="attack_id" HeaderText="Attack ID" InsertVisible="False" ReadOnly="True" SortExpression="attack_id" Visible="False" />
+                <asp:BoundField DataField="creature_id" HeaderText="Creature ID" SortExpression="creature_id" />
+                <asp:BoundField DataField="attack_name" HeaderText="Attack" SortExpression="attack_name" />
+                <asp:BoundField DataField="attack_damage" HeaderText="Damage" SortExpression="attack_damage" />
+                <asp:BoundField DataField="critical_threshold" HeaderText="Critical Threshold" SortExpression="critical_threshold" />
+                <asp:BoundField DataField="critical_multiplier" HeaderText="Critical Multiplier" SortExpression="critical_multiplier" />
+                <asp:BoundField DataField="attack_modifier" HeaderText="Attack Modifier" SortExpression="attack_modifier" />
+                <asp:BoundField DataField="user_id" HeaderText="User ID" SortExpression="user_id" ReadOnly="True" Visible="False" />
             </Columns>
             <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
             <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
-            <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+            <PagerStyle ForeColor="#F3E2D0" HorizontalAlign="Center" VerticalAlign="Middle"/>
             <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
             <SortedAscendingCellStyle BackColor="#FFF1D4" />
             <SortedAscendingHeaderStyle BackColor="#B95C30" />
@@ -176,13 +185,13 @@
                      />
             </FilterParameters>
         </asp:SqlDataSource>
-        <br />
-        <br />
-    
-        <br />
-        <br />
-    
     </div>
     </form>
+    <footer class="center">
+        <br />
+        <br />
+        <br />
+        Created by David Cruz, Gurdane Sethi, and Kevin Wagner.
+    </footer>
 </body>
 </html>

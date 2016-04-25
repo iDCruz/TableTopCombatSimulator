@@ -35,5 +35,11 @@
         <br />
         <asp:Button ID="btn_register" runat="server" OnClick="btn_register_Click" Text="Register" />
     </form>
+    <footer>
+        <br />
+        <br />
+        <br />
+        Created by David Cruz, Gurdane Sethi, and Kevin Wagner.
+    </footer>
 </body>
 </html>
