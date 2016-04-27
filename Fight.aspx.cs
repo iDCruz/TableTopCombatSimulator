@@ -29,7 +29,16 @@ public partial class Fight : System.Web.UI.Page
 
         //Fight Simulation Var
         Random random = new Random(DateTime.Now.Millisecond);
-        int number_of_fights_total = Int32.Parse(tbNumFights.Text);
+        int number_of_fights_total;
+        if (tbNumFights.Text.Equals(""))
+        {
+            number_of_fights_total = 10000;
+            lAutoNumFights.Visible = true;
+        }
+        else
+        {
+            number_of_fights_total = Int32.Parse(tbNumFights.Text);
+        }
         int number_of_fights_count = number_of_fights_total;
         bool creature_1_goes_first = true;
         float[] stats = { 0.0F, 0.0F };
@@ -86,7 +95,7 @@ public partial class Fight : System.Web.UI.Page
                     }
                 }
 
-                // if creature 2 goes fire
+                // if creature 2 goes first
                 else if (!creature_1_goes_first)
                 {
                     stats = Attack(creature2, Attack_list_2, creature1, ref temp_creature1_hp, random);

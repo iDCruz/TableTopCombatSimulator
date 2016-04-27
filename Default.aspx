@@ -16,13 +16,13 @@
         <br />
     
     </div>
-        <table style="margin:0 auto"">
-            <tr>
+        <table style="margin:0 auto" class="login">
+            <tr class="login">
                 <td>User Name:</td>
                 <td><asp:TextBox ID="tb_user" runat="server"></asp:TextBox></td>
                 <td>&nbsp;</td>
             </tr>
-            <tr>
+            <tr class="login">
                 <td>Password:</td>
                 <td><asp:TextBox ID="tb_pass" TextMode="Password" runat="server"></asp:TextBox></td>
                 <td>&nbsp;</td>
